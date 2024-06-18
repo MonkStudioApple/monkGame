@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B547AC372C201BB60085194F /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B547AC362C201BB60085194F /* GameViewController.swift */; };
 		B5881C7F2C1C3FCA0015C913 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5881C7E2C1C3FCA0015C913 /* AppDelegate.swift */; };
 		B5881C812C1C3FCA0015C913 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = B5881C802C1C3FCA0015C913 /* GameScene.sks */; };
 		B5881C832C1C3FCA0015C913 /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = B5881C822C1C3FCA0015C913 /* Actions.sks */; };
@@ -14,9 +15,13 @@
 		B5881C872C1C3FCA0015C913 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5881C862C1C3FCA0015C913 /* ViewController.swift */; };
 		B5881C892C1C3FCB0015C913 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B5881C882C1C3FCB0015C913 /* Assets.xcassets */; };
 		B5881C8C2C1C3FCB0015C913 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B5881C8A2C1C3FCB0015C913 /* Main.storyboard */; };
+		B59256C52C2164DA00210981 /* SpriteComponents.swift in Sources */ = {isa = PBXBuildFile; fileRef = B59256C42C2164DA00210981 /* SpriteComponents.swift */; };
+		B59256C82C2167B500210981 /* Tower.swift in Sources */ = {isa = PBXBuildFile; fileRef = B59256C72C2167B500210981 /* Tower.swift */; };
+		B59256CA2C2170FA00210981 /* EntityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B59256C92C2170FA00210981 /* EntityManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		B547AC362C201BB60085194F /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
 		B5881C7B2C1C3FCA0015C913 /* MonkGames.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MonkGames.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B5881C7E2C1C3FCA0015C913 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B5881C802C1C3FCA0015C913 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
@@ -26,6 +31,9 @@
 		B5881C882C1C3FCB0015C913 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B5881C8B2C1C3FCB0015C913 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		B5881C8D2C1C3FCB0015C913 /* MonkGames.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MonkGames.entitlements; sourceTree = "<group>"; };
+		B59256C42C2164DA00210981 /* SpriteComponents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpriteComponents.swift; sourceTree = "<group>"; };
+		B59256C72C2167B500210981 /* Tower.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tower.swift; sourceTree = "<group>"; };
+		B59256C92C2170FA00210981 /* EntityManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntityManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,12 +70,24 @@
 				B5881C802C1C3FCA0015C913 /* GameScene.sks */,
 				B5881C822C1C3FCA0015C913 /* Actions.sks */,
 				B5881C842C1C3FCA0015C913 /* GameScene.swift */,
+				B59256C42C2164DA00210981 /* SpriteComponents.swift */,
+				B59256C62C21675200210981 /* Entities */,
+				B547AC362C201BB60085194F /* GameViewController.swift */,
 				B5881C862C1C3FCA0015C913 /* ViewController.swift */,
 				B5881C882C1C3FCB0015C913 /* Assets.xcassets */,
 				B5881C8A2C1C3FCB0015C913 /* Main.storyboard */,
 				B5881C8D2C1C3FCB0015C913 /* MonkGames.entitlements */,
 			);
 			path = MonkGames;
+			sourceTree = "<group>";
+		};
+		B59256C62C21675200210981 /* Entities */ = {
+			isa = PBXGroup;
+			children = (
+				B59256C72C2167B500210981 /* Tower.swift */,
+				B59256C92C2170FA00210981 /* EntityManager.swift */,
+			);
+			path = Entities;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -142,8 +162,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B547AC372C201BB60085194F /* GameViewController.swift in Sources */,
+				B59256CA2C2170FA00210981 /* EntityManager.swift in Sources */,
 				B5881C872C1C3FCA0015C913 /* ViewController.swift in Sources */,
 				B5881C852C1C3FCA0015C913 /* GameScene.swift in Sources */,
+				B59256C82C2167B500210981 /* Tower.swift in Sources */,
+				B59256C52C2164DA00210981 /* SpriteComponents.swift in Sources */,
 				B5881C7F2C1C3FCA0015C913 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -299,6 +323,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
+				MACOSX_DEPLOYMENT_TARGET = 14.1;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.example.apple-samplecode.MonkGames";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -326,6 +351,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
+				MACOSX_DEPLOYMENT_TARGET = 14.1;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.example.apple-samplecode.MonkGames";
 				PRODUCT_NAME = "$(TARGET_NAME)";
