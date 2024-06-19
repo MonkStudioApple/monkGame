@@ -9,34 +9,33 @@ import SpriteKit
 import GameplayKit
 
 class GameScene: SKScene {
+    let gendut  = Gendut()
+    let kecil   = Kecil()
+    var gendutUpPressed:Bool = false
+    var gendutDownPressed:Bool = false
+    var gendutLeftPressed:Bool = false
+    var gendutRightPressed:Bool = false
+    
+    var kecilUpPressed:Bool = false
+    var kecilDownPressed:Bool = false
+    var kecilLeftPressed:Bool = false
+    var kecilRightPressed:Bool = false
     //setting platform
     var entityManager: EntityManager!
+    let playableRect: CGRect
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     override func didMove(to view: SKView) {
-        entityManager = EntityManager(scene: self)
-        let theTower1 = Tower(imageName: "")
-        if let spriteComponent = theTower1.component(ofType: SpriteComponents.self){
-            spriteComponent.node.position = CGPoint(x: spriteComponent.node.size.width/2, y: size.width/4*3)
-        }
-        entityManager.add(theTower1)
+        let background = SKSpriteNode
         
-        let theTower2 = Tower(imageName: "")
-        if let spriteComponent = theTower2.component(ofType:  SpriteComponents.self){
-            spriteComponent.node.position = CGPoint(x: spriteComponent.node.size.width/4, y: size.width/4)
-        }
-        entityManager.add(theTower2)
+        gendut.position = CGPoint(x: gendut.size.width - kecil.size.width, y: 1100)
+        addChild(gendut)
         
-        let theTower3 = Tower(imageName: "")
-        if let spriteComponent = theTower3.component(ofType: SpriteComponents.self){
-            spriteComponent.node.position = CGPoint(x: size.width-spriteComponent.node.size.width/2, y: size.width/4*3)
-        }
-        entityManager.add(theTower3)
-        
-        let theTower4 = Tower(imageName: "")
-        if let spriteComponent = theTower4.component(ofType: SpriteComponents.self){
-            spriteComponent.node.position = CGPoint(x: spriteComponent.node.size.width/4, y: size.width/4)
-        }
-        entityManager.add(theTower4)
+        kecil.position = CGPoint(x: kecil.size.width, y: 800)
+        addChild(kecil)
     }
     
     
@@ -71,5 +70,18 @@ class GameScene: SKScene {
     
     override func update(_ currentTime: TimeInterval) {
         // Called before each frame is rendered
+    }
+    
+    func debugDrawPlayAbleArea(){
+        let shape = SKShapeNode()
+        let path = CGMutablePath()
+        let transform = CGAffineTransform.identity
+        
+        path.addRect(playableRect, transform: transform)
+            
+        shape.path = path
+        shape.strokeColor = SKColor.red
+        shape.lineWidth = 4.0
+        addChild(shape)
     }
 }

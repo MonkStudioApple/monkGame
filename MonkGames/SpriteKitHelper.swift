@@ -32,7 +32,7 @@ extension SKSpriteNode{
     }
     
     // Start the animation using a name and a count (0 = repeat forever)
-    func startAnimation(textures: [SKTexture], speed: Double, name: Strign, count:
+    func startAnimation(textures: [SKTexture], speed: Double, name: String, count:
                         Int, resize: Bool, restore: Bool){
         //Run animation only if animation key doesnt already exist
         if(action(forKey: name) == nil) {
