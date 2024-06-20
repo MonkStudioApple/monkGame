@@ -28,7 +28,6 @@ extension SKSpriteNode{
         }
         
         return textureArray
-        
     }
     
     // Start the animation using a name and a count (0 = repeat forever)
