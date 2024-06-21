@@ -1,15 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "lv3stage2_foreground.png",
+      "filename" : "Gendut-run-4.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
+      "filename" : "Gendut-run-5.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
+      "filename" : "Gendut-run-6.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

@@ -1,15 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "lv3stage2_foreground.png",
+      "filename" : "Kecil-walk-13.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
+      "filename" : "Kecil-walk-14.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
+      "filename" : "Kecil-walk-15.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

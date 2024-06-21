@@ -19,6 +19,7 @@
 		B5881C8C2C1C3FCB0015C913 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B5881C8A2C1C3FCB0015C913 /* Main.storyboard */; };
 		B5AC12762C24215400D350C7 /* Handler.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5AC12752C24215400D350C7 /* Handler.swift */; };
 		B5AC12782C24219000D350C7 /* MenuScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5AC12772C24219000D350C7 /* MenuScene.swift */; };
+		F8B991AA2C254BE3004AC3CF /* Movement 2.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8B991A92C254BE3004AC3CF /* Movement 2.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +37,7 @@
 		B5881C8D2C1C3FCB0015C913 /* MonkGames.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MonkGames.entitlements; sourceTree = "<group>"; };
 		B5AC12752C24215400D350C7 /* Handler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Handler.swift; sourceTree = "<group>"; };
 		B5AC12772C24219000D350C7 /* MenuScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuScene.swift; sourceTree = "<group>"; };
+		F8B991A92C254BE3004AC3CF /* Movement 2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Movement 2.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,6 +84,7 @@
 				B5881C802C1C3FCA0015C913 /* GameScene.sks */,
 				B5881C822C1C3FCA0015C913 /* Actions.sks */,
 				B5881C842C1C3FCA0015C913 /* GameScene.swift */,
+				F8B991A92C254BE3004AC3CF /* Movement 2.swift */,
 				B5AC12752C24215400D350C7 /* Handler.swift */,
 				B500D2E22C22C884001E132C /* MainChar */,
 				B500D2E32C22CAE2001E132C /* SpriteKitHelper.swift */,
@@ -121,7 +124,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1520;
-				LastUpgradeCheck = 1520;
+				LastUpgradeCheck = 1600;
 				TargetAttributes = {
 					B5881C7A2C1C3FCA0015C913 = {
 						CreatedOnToolsVersion = 15.2;
@@ -172,6 +175,7 @@
 				B500D2E02C22C867001E132C /* Kecil.swift in Sources */,
 				B5AC12782C24219000D350C7 /* MenuScene.swift in Sources */,
 				B500D2DE2C22C85A001E132C /* Gendut.swift in Sources */,
+				F8B991AA2C254BE3004AC3CF /* Movement 2.swift in Sources */,
 				B5881C7F2C1C3FCA0015C913 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -224,6 +228,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
@@ -287,6 +292,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -317,7 +323,8 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = VNG2A57GP5;
+				DEAD_CODE_STRIPPING = YES;
+				DEVELOPMENT_TEAM = FSN9NYGU93;
 				ENABLE_HARDENED_RUNTIME = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
@@ -345,7 +352,8 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = VNG2A57GP5;
+				DEAD_CODE_STRIPPING = YES;
+				DEVELOPMENT_TEAM = FSN9NYGU93;
 				ENABLE_HARDENED_RUNTIME = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
