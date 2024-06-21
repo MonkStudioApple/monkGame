@@ -28,16 +28,48 @@ class GameScene: SKScene {
     
     
     override func didMove(to view: SKView) {
-        let backgroundImage = SKSpriteNode(imageNamed: "cave-background1x")
+        let physicsOutline = SKShapeNode(rect: CGRect(x: -50, y: -50, width: 100, height: 100))
+        physicsOutline.strokeColor = SKColor.black
+        let backgroundImage = SKSpriteNode(imageNamed: "caveSVG")
         backgroundImage.position = CGPoint(x: frame.midX, y: frame.midY)
         backgroundImage.zPosition = SKSpriteNode.Layer.background.rawValue
         addChild(backgroundImage)
         
-        let foregroundImage = SKSpriteNode(imageNamed: "cave-foreground1x")
-        foregroundImage.position = CGPoint(x: frame.midX, y: frame.midY)
-        foregroundImage.zPosition =  SKSpriteNode.Layer.platform.rawValue
+        let foregroundTexture = SKTexture(imageNamed: "cave-foreground1x")
+        let foregroundNode = SKSpriteNode(texture: foregroundTexture)
+        let playAblePhysicsBody = SKPhysicsBody(texture: foregroundTexture, size: foregroundNode.size)
+        playAblePhysicsBody.isDynamic = false
+        foregroundNode.physicsBody = playAblePhysicsBody
+        foregroundNode.position = CGPoint(x: frame.midX, y: frame.midY)
+        foregroundNode.zPosition =  SKSpriteNode.Layer.platform.rawValue
+        physicsOutline.position = foregroundNode.position
+        let zPosOutline = SKShapeNode(rect: CGRect(x: -50, y: -50, width: 100, height: 100))
+        zPosOutline.zPosition = SKSpriteNode.Layer.outline.rawValue
+        addChild(foregroundNode)
         
-        addChild(foregroundImage)
+        let tower1 = SKSpriteNode(imageNamed: "tower3.1-broken")
+        tower1.position = CGPoint(x: 300, y: 1300)
+        tower1.size = CGSize(width: gendut.size.width/1.5, height: gendut.size.height*1.5)
+        tower1.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: tower1.size.width/1.5, height: tower1.size.height/4), center: CGPoint(x: 0, y: tower1.size.height/2.5))
+        tower1.zPosition = SKSpriteNode.Layer.tower.rawValue
+        tower1.physicsBody?.categoryBitMask = SKSpriteNode.PhysicsCategory.tower
+        tower1.physicsBody?.contactTestBitMask = SKSpriteNode.PhysicsCategory.kecil
+        tower1.physicsBody?.collisionBitMask = SKSpriteNode.PhysicsCategory.none
+        tower1.physicsBody?.affectedByGravity = false
+        tower1.physicsBody?.isDynamic = false
+        addChild(tower1)
+        
+        let tower2 = SKSpriteNode(imageNamed: "tower3.1-broken")
+        tower2.position = CGPoint(x: 900, y: 20)
+        tower2.size = CGSize(width: gendut.size.width/1.5, height: gendut.size.height*1.5)
+        tower2.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: tower2.size.width/1.5, height: tower2.size.height/4), center: CGPoint(x: 0, y: tower2.size.height/2.5))
+        tower2.zPosition = SKSpriteNode.Layer.tower.rawValue
+        tower2.physicsBody?.categoryBitMask = SKSpriteNode.PhysicsCategory.tower
+        tower2.physicsBody?.contactTestBitMask = SKSpriteNode.PhysicsCategory.kecil
+        tower2.physicsBody?.collisionBitMask = SKSpriteNode.PhysicsCategory.none
+        tower2.physicsBody?.affectedByGravity = false
+        tower2.physicsBody?.isDynamic = false
+        addChild(tower2)
         
         gendut.position = CGPoint(x: gendut.size.width - kecil.size.width, y: 450)
         addChild(gendut)
@@ -45,6 +77,7 @@ class GameScene: SKScene {
         kecil.position = CGPoint(x: kecil.size.width - kecil.size.width/2, y: 650)
         addChild(kecil)
         
+        physicsWorld.contactDelegate = self
         NotificationCenter.default.addObserver(self, selector: #selector(didConnectController(_:)), name: NSNotification.Name.GCControllerDidConnect, object: nil)
     }
     
@@ -243,6 +276,31 @@ class GameScene: SKScene {
             kecil.position.x -= 5
             kecil.xScale = -1
             kecil.walk()
+        }
+        
+        //Out of bounds
+        if gendut.position.x < 0 {
+            gendut.position.x = 0
+        } else if gendut.position.x > self.size.width {
+            gendut.position.x = self.size.width
+        }
+
+        if gendut.position.y < 0 {
+            gendut.position.y = 0
+        } else if gendut.position.y > frame.maxY - 500 {
+            gendut.position.y = frame.maxY - 500
+        }
+        
+        if kecil.position.x < 0 {
+            kecil.position.x = 0
+        } else if kecil.position.x > self.size.width {
+            kecil.position.x = self.size.width
+        }
+        
+        if kecil.position.y < 0 {
+            kecil.position.y = 0
+        } else if kecil.position.y > frame.maxY - 500 {
+            kecil.position.y = frame.maxY - 500
         }
     }
     

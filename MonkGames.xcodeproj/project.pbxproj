@@ -19,6 +19,7 @@
 		B5881C8C2C1C3FCB0015C913 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B5881C8A2C1C3FCB0015C913 /* Main.storyboard */; };
 		B5AC12762C24215400D350C7 /* Handler.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5AC12752C24215400D350C7 /* Handler.swift */; };
 		B5AC12782C24219000D350C7 /* MenuScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5AC12772C24219000D350C7 /* MenuScene.swift */; };
+		B5AC127A2C251E8600D350C7 /* GameScenePhysicsDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5AC12792C251E8600D350C7 /* GameScenePhysicsDelegate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +37,7 @@
 		B5881C8D2C1C3FCB0015C913 /* MonkGames.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MonkGames.entitlements; sourceTree = "<group>"; };
 		B5AC12752C24215400D350C7 /* Handler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Handler.swift; sourceTree = "<group>"; };
 		B5AC12772C24219000D350C7 /* MenuScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuScene.swift; sourceTree = "<group>"; };
+		B5AC12792C251E8600D350C7 /* GameScenePhysicsDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScenePhysicsDelegate.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,6 +79,7 @@
 		B5881C7D2C1C3FCA0015C913 /* MonkGames */ = {
 			isa = PBXGroup;
 			children = (
+				B5AC12792C251E8600D350C7 /* GameScenePhysicsDelegate.swift */,
 				B5AC12772C24219000D350C7 /* MenuScene.swift */,
 				B5881C7E2C1C3FCA0015C913 /* AppDelegate.swift */,
 				B5881C802C1C3FCA0015C913 /* GameScene.sks */,
@@ -173,6 +176,7 @@
 				B5AC12782C24219000D350C7 /* MenuScene.swift in Sources */,
 				B500D2DE2C22C85A001E132C /* Gendut.swift in Sources */,
 				B5881C7F2C1C3FCA0015C913 /* AppDelegate.swift in Sources */,
+				B5AC127A2C251E8600D350C7 /* GameScenePhysicsDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
