@@ -12,7 +12,6 @@ extension SKSpriteNode{
     enum Layer: CGFloat{
         case background
         case platform
-        case cave
         case character
     }
     

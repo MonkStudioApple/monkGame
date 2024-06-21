@@ -19,8 +19,6 @@ class GameScene: SKScene {
     var kecilLeftPressed:Bool = false
     var kecilRightPressed:Bool = false
     
-    let backgroundImage = SKSpriteNode(imageNamed: "cave-background1x")
-    let foregroundImage = SKSpriteNode(imageNamed: "cave-foreground1x")
 
     var connectedControllers: [GCController] = []
     var playerControllers: [Int: GCController] = [:]
@@ -30,15 +28,15 @@ class GameScene: SKScene {
     
     
     override func didMove(to view: SKView) {
+        let backgroundImage = SKSpriteNode(imageNamed: "cave-background1x")
         backgroundImage.position = CGPoint(x: frame.midX, y: frame.midY)
-        backgroundImage.scale(to: CGSize(width: 2880, height: 1864))
-        backgroundImage.zPosition = -1
-
-        foregroundImage.position = CGPoint(x: frame.midX, y: 495)
-        foregroundImage.scale(to: CGSize(width: 2880, height: frame.size.height/2))
-        foregroundImage.zPosition = 1
-        
+        backgroundImage.zPosition = SKSpriteNode.Layer.background.rawValue
         addChild(backgroundImage)
+        
+        let foregroundImage = SKSpriteNode(imageNamed: "cave-foreground1x")
+        foregroundImage.position = CGPoint(x: frame.midX, y: frame.midY)
+        foregroundImage.zPosition =  SKSpriteNode.Layer.platform.rawValue
+        
         addChild(foregroundImage)
         
         gendut.position = CGPoint(x: gendut.size.width - kecil.size.width, y: 450)
