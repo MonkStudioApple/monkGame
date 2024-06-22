@@ -37,19 +37,19 @@ class GameScene: SKScene {
         
         let foregroundTexture = SKTexture(imageNamed: "cave-foreground1x")
         let foregroundNode = SKSpriteNode(texture: foregroundTexture)
-        let playAblePhysicsBody = SKPhysicsBody(texture: foregroundTexture, size: foregroundNode.size)
-        playAblePhysicsBody.isDynamic = false
-        foregroundNode.physicsBody = playAblePhysicsBody
+//        let playAblePhysicsBody = SKPhysicsBody(texture: foregroundTexture, size: foregroundNode.size)
+//        playAblePhysicsBody.isDynamic = false
+//        foregroundNode.physicsBody = playAblePhysicsBody
         foregroundNode.position = CGPoint(x: frame.midX, y: frame.midY)
         foregroundNode.zPosition =  SKSpriteNode.Layer.platform.rawValue
         physicsOutline.position = foregroundNode.position
-        let zPosOutline = SKShapeNode(rect: CGRect(x: -50, y: -50, width: 100, height: 100))
-        zPosOutline.zPosition = SKSpriteNode.Layer.outline.rawValue
+//        let zPosOutline = SKShapeNode(rect: CGRect(x: -50, y: -50, width: 100, height: 100))
+//        zPosOutline.zPosition = SKSpriteNode.Layer.outline.rawValue
         addChild(foregroundNode)
         
         let tower1 = SKSpriteNode(imageNamed: "tower3.1-broken")
         tower1.position = CGPoint(x: 300, y: 1300)
-        tower1.size = CGSize(width: gendut.size.width/1.5, height: gendut.size.height*1.5)
+//        tower1.size = CGSize(width: gendut.size.width/1.5, height: gendut.size.height*1.5)
         tower1.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: tower1.size.width/1.5, height: tower1.size.height/4), center: CGPoint(x: 0, y: tower1.size.height/2.5))
         tower1.zPosition = SKSpriteNode.Layer.tower.rawValue
         tower1.physicsBody?.categoryBitMask = SKSpriteNode.PhysicsCategory.tower
@@ -61,7 +61,7 @@ class GameScene: SKScene {
         
         let tower2 = SKSpriteNode(imageNamed: "tower3.1-broken")
         tower2.position = CGPoint(x: 900, y: 20)
-        tower2.size = CGSize(width: gendut.size.width/1.5, height: gendut.size.height*1.5)
+//        tower2.size = CGSize(width: gendut.size.width/1.5, height: gendut.size.height*1.5)
         tower2.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: tower2.size.width/1.5, height: tower2.size.height/4), center: CGPoint(x: 0, y: tower2.size.height/2.5))
         tower2.zPosition = SKSpriteNode.Layer.tower.rawValue
         tower2.physicsBody?.categoryBitMask = SKSpriteNode.PhysicsCategory.tower
@@ -71,6 +71,24 @@ class GameScene: SKScene {
         tower2.physicsBody?.isDynamic = false
         addChild(tower2)
         
+        let boundaries = SKShapeNode(rectOf: CGSize(width: frame.width, height: frame.height/2))
+        boundaries.position = CGPoint(x: frame.size.width/2, y: size.height - frame.size.height/3 + 280)
+        boundaries.zPosition = SKSpriteNode.Layer.boundaries.rawValue
+        boundaries.zRotation = -CGFloat.pi / 8
+        //tf bro wth
+        let boundaryPhysics = SKPhysicsBody(rectangleOf: boundaries.frame.size)
+        boundaryPhysics.categoryBitMask = SKSpriteNode.PhysicsCategory.platform
+        boundaryPhysics.contactTestBitMask = SKSpriteNode.PhysicsCategory.none
+        boundaryPhysics.collisionBitMask = SKSpriteNode.PhysicsCategory.kecil | SKSpriteNode.PhysicsCategory.gendut
+        boundaryPhysics.isDynamic = false
+        boundaryPhysics.affectedByGravity = false
+        boundaryPhysics.allowsRotation = true
+//        boundaryPhysics.angularVelocity = boundaries.zRotation
+        boundaryPhysics.node?.position = boundaries.position
+        boundaries.physicsBody = boundaryPhysics
+        addChild(boundaries)
+                                     
+                                     
         gendut.position = CGPoint(x: gendut.size.width - kecil.size.width, y: 450)
         addChild(gendut)
         
@@ -279,29 +297,29 @@ class GameScene: SKScene {
         }
         
         //Out of bounds
-        if gendut.position.x < 0 {
-            gendut.position.x = 0
-        } else if gendut.position.x > self.size.width {
-            gendut.position.x = self.size.width
-        }
-
-        if gendut.position.y < 0 {
-            gendut.position.y = 0
-        } else if gendut.position.y > frame.maxY - 500 {
-            gendut.position.y = frame.maxY - 500
-        }
-        
-        if kecil.position.x < 0 {
-            kecil.position.x = 0
-        } else if kecil.position.x > self.size.width {
-            kecil.position.x = self.size.width
-        }
-        
-        if kecil.position.y < 0 {
-            kecil.position.y = 0
-        } else if kecil.position.y > frame.maxY - 500 {
-            kecil.position.y = frame.maxY - 500
-        }
+//        if gendut.position.x < 0 {
+//            gendut.position.x = 0
+//        } else if gendut.position.x > self.size.width {
+//            gendut.position.x = self.size.width
+//        }
+//
+//        if gendut.position.y < 0 {
+//            gendut.position.y = 0
+//        } else if gendut.position.y > frame.maxY - 500 {
+//            gendut.position.y = frame.maxY - 500
+//        }
+//        
+//        if kecil.position.x < 0 {
+//            kecil.position.x = 0
+//        } else if kecil.position.x > self.size.width {
+//            kecil.position.x = self.size.width
+//        }
+//        
+//        if kecil.position.y < 0 {
+//            kecil.position.y = 0
+//        } else if kecil.position.y > frame.maxY - 500 {
+//            kecil.position.y = frame.maxY - 500
+//        }
     }
     
     

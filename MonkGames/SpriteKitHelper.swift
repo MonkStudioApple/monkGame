@@ -15,7 +15,7 @@ extension SKSpriteNode{
         case tower
         case character
         case label
-        case outline
+        case boundaries
     }
     enum PhysicsCategory {
         static let none: UInt32 = 0
