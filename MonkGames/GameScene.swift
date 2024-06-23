@@ -76,7 +76,7 @@ class GameScene: SKScene {
         boundaries.position = CGPoint(x: frame.size.width/2, y: size.height - frame.size.height/4 + 280)
         boundaries.zPosition = SKSpriteNode.Layer.boundaries.rawValue
         boundaries.zRotation = -CGFloat.pi / 9
-        let boundaryPhysics = SKPhysicsBody(rectangleOf: b	oundaries.frame.size)
+        let boundaryPhysics = SKPhysicsBody(rectangleOf: boundaries.frame.size)
         boundaryPhysics.categoryBitMask = SKSpriteNode.PhysicsCategory.platform
         boundaryPhysics.contactTestBitMask = SKSpriteNode.PhysicsCategory.none
         boundaryPhysics.collisionBitMask = SKSpriteNode.PhysicsCategory.kecil | SKSpriteNode.PhysicsCategory.gendut
@@ -87,6 +87,7 @@ class GameScene: SKScene {
 //        boundaryPhysics.node?.position = boundaries.position
         boundaries.physicsBody = boundaryPhysics
         addChild(boundaries)
+        
                                      
                                      
         gendut.position = CGPoint(x: gendut.size.width - kecil.size.width, y: 450)
