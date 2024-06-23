@@ -71,12 +71,12 @@ class GameScene: SKScene {
         tower2.physicsBody?.isDynamic = false
         addChild(tower2)
         
-        let boundaries = SKShapeNode(rectOf: CGSize(width: frame.width, height: frame.height/2))
-        boundaries.position = CGPoint(x: frame.size.width/2, y: size.height - frame.size.height/3 + 280)
+        let boundaries = SKShapeNode(rectOf: CGSize(width: frame.width, height: 20))
+        boundaries.fillColor = NSColor.white
+        boundaries.position = CGPoint(x: frame.size.width/2, y: size.height - frame.size.height/4 + 280)
         boundaries.zPosition = SKSpriteNode.Layer.boundaries.rawValue
-        boundaries.zRotation = -CGFloat.pi / 8
-        //tf bro wth
-        let boundaryPhysics = SKPhysicsBody(rectangleOf: boundaries.frame.size)
+        boundaries.zRotation = -CGFloat.pi / 9
+        let boundaryPhysics = SKPhysicsBody(rectangleOf: b	oundaries.frame.size)
         boundaryPhysics.categoryBitMask = SKSpriteNode.PhysicsCategory.platform
         boundaryPhysics.contactTestBitMask = SKSpriteNode.PhysicsCategory.none
         boundaryPhysics.collisionBitMask = SKSpriteNode.PhysicsCategory.kecil | SKSpriteNode.PhysicsCategory.gendut
@@ -84,7 +84,7 @@ class GameScene: SKScene {
         boundaryPhysics.affectedByGravity = false
         boundaryPhysics.allowsRotation = true
 //        boundaryPhysics.angularVelocity = boundaries.zRotation
-        boundaryPhysics.node?.position = boundaries.position
+//        boundaryPhysics.node?.position = boundaries.position
         boundaries.physicsBody = boundaryPhysics
         addChild(boundaries)
                                      
