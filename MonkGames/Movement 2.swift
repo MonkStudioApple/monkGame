@@ -14,6 +14,7 @@ class Movement{
         if gendutUpPressed == true {
             gendut.position.y += 2.5
             gendut.walk()
+            
         } else if gendutDownPressed == true {
             gendut.position.y -= 2.5
             gendut.walk()

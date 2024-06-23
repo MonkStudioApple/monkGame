@@ -9,6 +9,11 @@ class GameScene: SKScene {
     let gendut = Gendut()
     let kecil = Kecil()
     
+    let canonLeft = Canon_Left()
+    let canonRight = Canon_Right()
+    
+    let bos = Bos()
+    
     var gendutUpPressed:Bool = false
     var gendutDownPressed:Bool = false
     var gendutLeftPressed:Bool = false
@@ -30,22 +35,41 @@ class GameScene: SKScene {
     
     
     override func didMove(to view: SKView) {
+
+   
         backgroundImage.position = CGPoint(x: frame.midX, y: frame.midY)
         backgroundImage.scale(to: CGSize(width: 2880, height: 1864))
-        backgroundImage.zPosition = -1
+        backgroundImage.zPosition = SKSpriteNode.Layer.background.rawValue
 
         foregroundImage.position = CGPoint(x: frame.midX, y: 400)
         foregroundImage.setScale(1.0)
-        foregroundImage.zPosition = 0
+        foregroundImage.zPosition = SKSpriteNode.Layer.foreground.rawValue
+        
         
         addChild(backgroundImage)
         addChild(foregroundImage)
         
         gendut.position = CGPoint(x: 600, y: 900)
         addChild(gendut)
-         
+        
+        
         kecil.position = CGPoint(x: 100, y: 300)
         addChild(kecil)
+        
+        
+        canonLeft.position = CGPoint(x: 150, y: 450)
+        addChild(canonLeft)
+        
+        canonRight.position = CGPoint(x: foregroundImage.size.width - 750, y: 450)
+        addChild(canonRight)
+        
+        bos.position = CGPoint(x: self.frame.midX, y: self.frame.midY)
+        addChild(bos)
+        
+        canonLeft.shoot()
+        canonRight.shoot()
+        
+        
         
         
        
@@ -132,22 +156,6 @@ class GameScene: SKScene {
                 
             }
         }
-        
-        if let controller = playerControllers[0] {
-            if let extendedGamepad = controller.extendedGamepad {
-                let thumbstick = extendedGamepad.leftThumbstick
-                if thumbstick.xAxis.value < -0.5 {
-                    gendutLeftPressed = true
-                } else if thumbstick.xAxis.value > 0.5 {
-                    gendutRightPressed = true
-                }
-                if thumbstick.yAxis.value < -0.5 {
-                    gendutDownPressed = true
-                } else if thumbstick.yAxis.value > 0.5 {
-                    gendutUpPressed = true
-                }
-            }
-        }
     }
     
     override func keyDown(with event: NSEvent) {
@@ -207,39 +215,19 @@ class GameScene: SKScene {
     }
     
     override func update(_ currentTime: TimeInterval) {
+       
         let movement = Movement()
-        outOfBounds()
+        outOfBounds(gendut: gendut, kecil: kecil, foregroundImage: foregroundImage)
         movement.moveGendutAnimation(gendut: gendut,gendutUpPressed: gendutUpPressed, gendutDownPressed: gendutDownPressed, gendutLeftPressed: gendutLeftPressed, gendutRightPressed: gendutRightPressed)
         movement.moveKecilAnimation(kecil: kecil, kecilUpPressed: kecilUpPressed, kecilDownPressed: kecilDownPressed, kecilLeftPressed: kecilLeftPressed, kecilRightPressed: kecilRightPressed)
         
+        
+        
+        
     }
     
     
-    func outOfBounds() {
-        if gendut.position.x < 150 {
-            gendut.position.x = 150
-        } else if gendut.position.x > foregroundImage.size.width - 150 {
-            gendut.position.x = foregroundImage.size.width - 150
-        }
 
-        if gendut.position.y < 150 {
-            gendut.position.y = 150
-        } else if gendut.position.y > foregroundImage.size.height - 150 {
-            gendut.position.y = foregroundImage.size.height - 150
-        }
-        
-        if kecil.position.x < 150 {
-            kecil.position.x = 150
-        } else if kecil.position.x > foregroundImage.size.width - 150 {
-            kecil.position.x = foregroundImage.size.width - 150
-        }
-        
-        if kecil.position.y < 150 {
-            kecil.position.y = 150
-        } else if kecil.position.y > foregroundImage.size.height - 150 {
-            kecil.position.y = foregroundImage.size.height - 150
-        }
-    }
     
     
     deinit {
