@@ -57,7 +57,7 @@ class GameScene: SKScene {
         tower1.physicsBody?.collisionBitMask = SKSpriteNode.PhysicsCategory.none
         tower1.physicsBody?.affectedByGravity = false
         tower1.physicsBody?.isDynamic = false
-        addChild(tower1)
+//        addChild(tower1)
         
         let tower2 = SKSpriteNode(imageNamed: "tower3.1-broken")
         tower2.position = CGPoint(x: 900, y: 20)
@@ -71,12 +71,12 @@ class GameScene: SKScene {
         tower2.physicsBody?.isDynamic = false
         addChild(tower2)
         
-        let boundaries = SKShapeNode(rectOf: CGSize(width: frame.width, height: 20))
-        boundaries.fillColor = NSColor.white
-        boundaries.position = CGPoint(x: frame.size.width/2, y: size.height - frame.size.height/4 + 280)
+        let boundaries = SKShapeNode(rectOf: CGSize(width: frame.width+1000, height: 20))
+//        boundaries.fillColor = NSColor.white
+        boundaries.position = CGPoint(x: frame.size.width/2, y: size.height - frame.size.height/2 + 20 )
         boundaries.zPosition = SKSpriteNode.Layer.boundaries.rawValue
-        boundaries.zRotation = -CGFloat.pi / 9
-        let boundaryPhysics = SKPhysicsBody(rectangleOf: b oundaries.frame.size)
+        boundaries.zRotation = -CGFloat.pi / 12
+        let boundaryPhysics = SKPhysicsBody(rectangleOf: CGSize(width: frame.width+1000, height: 20))
         boundaryPhysics.categoryBitMask = SKSpriteNode.PhysicsCategory.platform
         boundaryPhysics.contactTestBitMask = SKSpriteNode.PhysicsCategory.none
         boundaryPhysics.collisionBitMask = SKSpriteNode.PhysicsCategory.kecil | SKSpriteNode.PhysicsCategory.gendut
@@ -88,7 +88,37 @@ class GameScene: SKScene {
         boundaries.physicsBody = boundaryPhysics
         addChild(boundaries)
         
-                                     
+        let boundaries2 = SKShapeNode(rectOf: CGSize(width: frame.height, height: 20))
+
+        boundaries2.position = CGPoint(x: 20, y: size.height - frame.size.height/2)
+        boundaries2.zPosition = SKSpriteNode.Layer.boundaries.rawValue
+        boundaries2.zRotation = CGFloat.pi/5
+        let boundaries2Physics = SKPhysicsBody(rectangleOf: CGSize(width: frame.height, height: 20))
+        boundaries2Physics.categoryBitMask = SKSpriteNode.PhysicsCategory.platform
+        boundaries2Physics.contactTestBitMask = SKSpriteNode.PhysicsCategory.none
+        boundaries2Physics.collisionBitMask = SKSpriteNode.PhysicsCategory.kecil | SKSpriteNode.PhysicsCategory.gendut
+        boundaries2Physics.isDynamic = false
+        boundaries2Physics.affectedByGravity = false
+        boundaries2Physics.allowsRotation = true
+        boundaries2.physicsBody = boundaries2Physics
+        boundaries2.fillColor = NSColor.white
+        addChild(boundaries2)
+                               
+        
+        let boundaries3 = SKShapeNode(rectOf: CGSize(width: frame.height, height: 20 ))
+        boundaries3.position = CGPoint(x: size.width - 100, y: frame.size.height/3 )
+        boundaries3.zPosition = SKSpriteNode.Layer.boundaries.rawValue
+        boundaries3.zRotation = CGFloat.pi/3
+        let boundaries3Physics = SKPhysicsBody(rectangleOf: CGSize(width: frame.height, height: 20))
+        boundaries3Physics.categoryBitMask = SKSpriteNode.PhysicsCategory.platform
+        boundaries3Physics.contactTestBitMask = SKSpriteNode.PhysicsCategory.none
+        boundaries3Physics.collisionBitMask = SKSpriteNode.PhysicsCategory.kecil | SKSpriteNode.PhysicsCategory.gendut
+        boundaries3Physics.isDynamic = false
+        boundaries3Physics.affectedByGravity = false
+        boundaries3Physics.allowsRotation = true
+        boundaries3.physicsBody = boundaries3Physics
+//        boundaries3.fillColor = NSColor.white
+        addChild(boundaries3)
                                      
         gendut.position = CGPoint(x: gendut.size.width - kecil.size.width, y: 450)
         addChild(gendut)

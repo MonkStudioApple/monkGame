@@ -27,7 +27,7 @@ class Kecil: SKSpriteNode{
         self.zPosition = SKSpriteNode.Layer.character.rawValue
         
         // Physics
-        self.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: self.size.width, height: self.size.height/3), center: CGPoint(x: 0, y: self.size.height/3))
+        self.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: self.size.width/2, height: self.size.height/5), center: CGPoint(x: 0, y: -self.size.height/2.5))
         self.physicsBody?.categoryBitMask = SKSpriteNode.PhysicsCategory.kecil
         
         self.physicsBody?.contactTestBitMask = SKSpriteNode.PhysicsCategory.gendut | SKSpriteNode.PhysicsCategory.monster
