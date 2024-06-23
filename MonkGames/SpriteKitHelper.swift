@@ -12,8 +12,18 @@ extension SKSpriteNode{
     enum Layer: CGFloat{
         case background
         case platform
-        case cave
+        case tower
         case character
+        case label
+        case boundaries
+    }
+    enum PhysicsCategory {
+        static let none: UInt32 = 0
+        static let gendut: UInt32 = 0b1 //1
+        static let kecil: UInt32 = 0b10 //2
+        static let monster: UInt32 = 0b100 //4
+        static let tower: UInt32 = 0b1000 //8
+        static let platform: UInt32 = 0b10000 //16
     }
     
     func loadAnimation(atlas: String, prefix: String, startAt: Int, stopAt: Int) ->

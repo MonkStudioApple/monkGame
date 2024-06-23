@@ -19,8 +19,6 @@ class GameScene: SKScene {
     var kecilLeftPressed:Bool = false
     var kecilRightPressed:Bool = false
     
-    let backgroundImage = SKSpriteNode(imageNamed: "cave-background1x")
-    let foregroundImage = SKSpriteNode(imageNamed: "cave-foreground1x")
 
     var connectedControllers: [GCController] = []
     var playerControllers: [Int: GCController] = [:]
@@ -30,23 +28,74 @@ class GameScene: SKScene {
     
     
     override func didMove(to view: SKView) {
+        let physicsOutline = SKShapeNode(rect: CGRect(x: -50, y: -50, width: 100, height: 100))
+        physicsOutline.strokeColor = SKColor.black
+        let backgroundImage = SKSpriteNode(imageNamed: "caveSVG")
         backgroundImage.position = CGPoint(x: frame.midX, y: frame.midY)
-        backgroundImage.scale(to: CGSize(width: 2880, height: 1864))
-        backgroundImage.zPosition = -1
-
-        foregroundImage.position = CGPoint(x: frame.midX, y: 495)
-        foregroundImage.scale(to: CGSize(width: 2880, height: frame.size.height/2))
-        foregroundImage.zPosition = 1
-        
+        backgroundImage.zPosition = SKSpriteNode.Layer.background.rawValue
         addChild(backgroundImage)
-        addChild(foregroundImage)
         
+        let foregroundTexture = SKTexture(imageNamed: "cave-foreground1x")
+        let foregroundNode = SKSpriteNode(texture: foregroundTexture)
+//        let playAblePhysicsBody = SKPhysicsBody(texture: foregroundTexture, size: foregroundNode.size)
+//        playAblePhysicsBody.isDynamic = false
+//        foregroundNode.physicsBody = playAblePhysicsBody
+        foregroundNode.position = CGPoint(x: frame.midX, y: frame.midY)
+        foregroundNode.zPosition =  SKSpriteNode.Layer.platform.rawValue
+        physicsOutline.position = foregroundNode.position
+//        let zPosOutline = SKShapeNode(rect: CGRect(x: -50, y: -50, width: 100, height: 100))
+//        zPosOutline.zPosition = SKSpriteNode.Layer.outline.rawValue
+        addChild(foregroundNode)
+        
+        let tower1 = SKSpriteNode(imageNamed: "tower3.1-broken")
+        tower1.position = CGPoint(x: 300, y: 1300)
+//        tower1.size = CGSize(width: gendut.size.width/1.5, height: gendut.size.height*1.5)
+        tower1.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: tower1.size.width/1.5, height: tower1.size.height/4), center: CGPoint(x: 0, y: tower1.size.height/2.5))
+        tower1.zPosition = SKSpriteNode.Layer.tower.rawValue
+        tower1.physicsBody?.categoryBitMask = SKSpriteNode.PhysicsCategory.tower
+        tower1.physicsBody?.contactTestBitMask = SKSpriteNode.PhysicsCategory.kecil
+        tower1.physicsBody?.collisionBitMask = SKSpriteNode.PhysicsCategory.none
+        tower1.physicsBody?.affectedByGravity = false
+        tower1.physicsBody?.isDynamic = false
+        addChild(tower1)
+        
+        let tower2 = SKSpriteNode(imageNamed: "tower3.1-broken")
+        tower2.position = CGPoint(x: 900, y: 20)
+//        tower2.size = CGSize(width: gendut.size.width/1.5, height: gendut.size.height*1.5)
+        tower2.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: tower2.size.width/1.5, height: tower2.size.height/4), center: CGPoint(x: 0, y: tower2.size.height/2.5))
+        tower2.zPosition = SKSpriteNode.Layer.tower.rawValue
+        tower2.physicsBody?.categoryBitMask = SKSpriteNode.PhysicsCategory.tower
+        tower2.physicsBody?.contactTestBitMask = SKSpriteNode.PhysicsCategory.kecil
+        tower2.physicsBody?.collisionBitMask = SKSpriteNode.PhysicsCategory.none
+        tower2.physicsBody?.affectedByGravity = false
+        tower2.physicsBody?.isDynamic = false
+        addChild(tower2)
+        
+        let boundaries = SKShapeNode(rectOf: CGSize(width: frame.width, height: 20))
+        boundaries.fillColor = NSColor.white
+        boundaries.position = CGPoint(x: frame.size.width/2, y: size.height - frame.size.height/4 + 280)
+        boundaries.zPosition = SKSpriteNode.Layer.boundaries.rawValue
+        boundaries.zRotation = -CGFloat.pi / 9
+        let boundaryPhysics = SKPhysicsBody(rectangleOf: b	oundaries.frame.size)
+        boundaryPhysics.categoryBitMask = SKSpriteNode.PhysicsCategory.platform
+        boundaryPhysics.contactTestBitMask = SKSpriteNode.PhysicsCategory.none
+        boundaryPhysics.collisionBitMask = SKSpriteNode.PhysicsCategory.kecil | SKSpriteNode.PhysicsCategory.gendut
+        boundaryPhysics.isDynamic = false
+        boundaryPhysics.affectedByGravity = false
+        boundaryPhysics.allowsRotation = true
+//        boundaryPhysics.angularVelocity = boundaries.zRotation
+//        boundaryPhysics.node?.position = boundaries.position
+        boundaries.physicsBody = boundaryPhysics
+        addChild(boundaries)
+                                     
+                                     
         gendut.position = CGPoint(x: gendut.size.width - kecil.size.width, y: 450)
         addChild(gendut)
         
         kecil.position = CGPoint(x: kecil.size.width - kecil.size.width/2, y: 650)
         addChild(kecil)
         
+        physicsWorld.contactDelegate = self
         NotificationCenter.default.addObserver(self, selector: #selector(didConnectController(_:)), name: NSNotification.Name.GCControllerDidConnect, object: nil)
     }
     
@@ -246,6 +295,31 @@ class GameScene: SKScene {
             kecil.xScale = -1
             kecil.walk()
         }
+        
+        //Out of bounds
+//        if gendut.position.x < 0 {
+//            gendut.position.x = 0
+//        } else if gendut.position.x > self.size.width {
+//            gendut.position.x = self.size.width
+//        }
+//
+//        if gendut.position.y < 0 {
+//            gendut.position.y = 0
+//        } else if gendut.position.y > frame.maxY - 500 {
+//            gendut.position.y = frame.maxY - 500
+//        }
+//        
+//        if kecil.position.x < 0 {
+//            kecil.position.x = 0
+//        } else if kecil.position.x > self.size.width {
+//            kecil.position.x = self.size.width
+//        }
+//        
+//        if kecil.position.y < 0 {
+//            kecil.position.y = 0
+//        } else if kecil.position.y > frame.maxY - 500 {
+//            kecil.position.y = frame.maxY - 500
+//        }
     }
     
     
